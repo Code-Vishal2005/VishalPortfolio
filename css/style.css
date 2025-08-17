@@ -996,6 +996,47 @@ ul {
     .about-stats {
         grid-template-columns: 1fr;
     }
+    .timeline::after {
+        left: 3.1rem;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 7rem;
+        padding-right: 2rem;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-item::after {
+        left: 1.8rem;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+    .dark-mode-toggle {
+        top: 1.5rem;
+        right: 6rem; /* Make space for hamburger menu */
+        width: 4.5rem;
+        height: 2.2rem;
+    }
+    
+    .navbar .container {
+        padding-right: 8rem; /* Make space for both buttons */
+    }
+    
+    .hamburger {
+        position: absolute;
+        right: 1.5rem;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -1013,5 +1054,197 @@ ul {
 
     .project-links {
         flex-direction: column;
+    }
+    .timeline::after {
+        display: none;
+    }
+    
+    .timeline-item {
+        padding-left: 2rem;
+    }
+    
+    .timeline-item::after {
+        display: none;
+    }
+    .dark-mode-toggle {
+        right: 5.5rem;
+    }
+    
+    .navbar .container {
+        padding-right: 7rem;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .navbar {
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    .dark-mode-toggle {
+        top: calc(1.5rem + env(safe-area-inset-top));
+    }
+    
+    .nav-links {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* General Responsive Improvements */
+@media screen and (max-width: 992px) and (min-width: 769px) {
+    /* Tablet specific styles */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .hero-image img {
+        width: 30rem;
+        height: 30rem;
+    }
+    
+    .section {
+        padding: 6rem 0;
+    }
+    
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 4rem;
+    }
+    
+    .about-stats,
+    .skills-grid,
+    .projects-grid,
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Mobile and tablet shared styles */
+    .section {
+        padding: 5rem 0;
+    }
+    
+    .hero {
+        height: auto;
+        padding: 10rem 0;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+    
+    .hero-image img {
+        width: 25rem;
+        height: 25rem;
+        margin-top: 3rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .about-stats,
+    .skills-grid,
+    .projects-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Small mobile devices */
+    html {
+        font-size: 55%;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .hero-image img {
+        width: 20rem;
+        height: 20rem;
+    }
+    
+    .section-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 25rem;
+    }
+    
+    .back-to-top {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.6rem;
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
+
+/* iPad Pro portrait specific fixes */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) {
+    .hero .container {
+        flex-direction: row;
+    }
+    
+    .hero-image img {
+        width: 30rem;
+        height: 30rem;
+    }
+    
+    .section-title {
+        font-size: 3.5rem;
+    }
+    
+    .about-content {
+        flex-direction: row;
+    }
+    
+    .dark-mode-toggle {
+        right: 8rem;
+    }
+}
+
+/* Safe area handling */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .navbar .container {
+        padding-left: max(2rem, env(safe-area-inset-left));
+        padding-right: max(2rem, env(safe-area-inset-right));
+    }
+    
+    .container {
+        padding-left: max(2rem, env(safe-area-inset-left));
+        padding-right: max(2rem, env(safe-area-inset-right));
     }
 }
